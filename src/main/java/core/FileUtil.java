@@ -88,12 +88,26 @@ public class FileUtil {
 	 * Obtiene un archivo JSON a partir de una url y lo devuelve en objeto JSONObject
 	 * 
 	 * @param url la url del JSON source
-	 * @return el json en objeto java
+	 * @return el json en objeto JSONObject
 	 */
-	public static JSONObject getJSONFile(String url)
+	public static JSONObject getJSONObjectFromFile(String url)
 	{
 		String contenido = readFile(url);
 		JSONObject json = (JSONObject) JSONSerializer.toJSON(contenido);
+		
+		return json;
+	}
+	
+	/**
+	 * Obtiene un archivo JSON a partir de una url y lo devuelve en objeto JSONArray
+	 * 
+	 * @param url la url del JSON source
+	 * @return el json en objeto JSONArray
+	 */
+	public static JSONArray getJSONArrayFromFile(String url)
+	{
+		String contenido = readFile(url);
+		JSONArray json = (JSONArray) JSONSerializer.toJSON(contenido);
 		
 		return json;
 	}

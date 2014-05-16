@@ -7,11 +7,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MEventController {
 	
-	private final String jsonURL = "data/data.json";
+	private final String jsonDataURL = "data/data.json";
+	private final String jsonCategoriesURL = "data/categories.json";
+	private final String jsonCountriesURL = "data/countries_ar.json";
 
+	/**
+	 * Método de web service que devuelve el JSON completo con datos en formato Memoria
+	 * @return
+	 */
     @RequestMapping("/data")
     public @ResponseBody String data() {
-    	return "dataMemoria(" + FileUtil.getJSONFile(jsonURL) + ")";
+    	return "dataMemoria(" + FileUtil.getJSONObjectFromFile(jsonDataURL) + ")";
     }
 
+    @RequestMapping("/categories")
+    public @ResponseBody String categories() {
+    	return "categoriesMemoria(" + FileUtil.getJSONArrayFromFile(jsonCategoriesURL) + ")";
+    }
+
+    @RequestMapping("/countries")
+    public @ResponseBody String countries() {
+    	return "countriesMemoria(" + FileUtil.getJSONArrayFromFile(jsonCountriesURL) + ")";
+    }
 }
