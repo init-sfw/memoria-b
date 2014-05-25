@@ -1,11 +1,14 @@
 package core;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Iterator;
 
 import net.sf.json.JSONArray;
@@ -38,18 +41,21 @@ public class FileUtil {
 		}
 	}
 	
-	private static String readFile (String url)
+	private static String readFile (URL url)
 	{		 
 		BufferedReader br = null;
 		StringBuffer fileContent = new StringBuffer();
  
 		try { 
 			String sCurrentLine; 
-			br = new BufferedReader(new FileReader(url)); 
+			br = new BufferedReader(new FileReader(new File(url.toURI()))); 
 			while ((sCurrentLine = br.readLine()) != null) {
 				fileContent.append(sCurrentLine);
 			} 
-		} catch (IOException e) {
+		} 
+		catch (URISyntaxException e) {
+			e.printStackTrace();
+		}catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -67,7 +73,7 @@ public class FileUtil {
 	 * @param url la url del JSON source
 	 * @param output la url del JSON destino
 	 */
-	public static void convertJSONToProperFormat(String url, String output)
+	public static void convertJSONToProperFormat(URL url, String output)
 	{
 		String contenido = readFile(url);
 		JSONObject json = (JSONObject) JSONSerializer.toJSON(contenido);
@@ -90,7 +96,7 @@ public class FileUtil {
 	 * @param url la url del JSON source
 	 * @return el json en objeto JSONObject
 	 */
-	public static JSONObject getJSONObjectFromFile(String url)
+	public static JSONObject getJSONObjectFromFile(URL url)
 	{
 		String contenido = readFile(url);
 		JSONObject json = (JSONObject) JSONSerializer.toJSON(contenido);
@@ -104,7 +110,7 @@ public class FileUtil {
 	 * @param url la url del JSON source
 	 * @return el json en objeto JSONArray
 	 */
-	public static JSONArray getJSONArrayFromFile(String url)
+	public static JSONArray getJSONArrayFromFile(URL url)
 	{
 		String contenido = readFile(url);
 		JSONArray json = (JSONArray) JSONSerializer.toJSON(contenido);

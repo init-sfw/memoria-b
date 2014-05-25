@@ -1,6 +1,10 @@
 package core;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.net.URL;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -13,7 +17,7 @@ public class FileUtilTest {
 
 	@Test
 	public void testGetJson() {
-		String url = "data/data.json";
+		URL url = getClass().getResource("/data/data.json");	
 		JSONObject obj = FileUtil.getJSONObjectFromFile(url);
 		
 		assertNotNull(obj);
@@ -21,7 +25,7 @@ public class FileUtilTest {
 
 	@Test
 	public void testGetJsonSize() {
-		String url = "data/data.json";
+		URL url = getClass().getResource("/data/data.json");
 		JSONObject obj = FileUtil.getJSONObjectFromFile(url);
 		
 		assertEquals(20, ((JSONArray)obj.get("data")).size());;
@@ -29,7 +33,7 @@ public class FileUtilTest {
 	
 	@Test
 	public void testCategories() {
-		String url = "data/categories.json";
+		URL url = getClass().getResource("/data/categories.json");
 		JSONArray obj = FileUtil.getJSONArrayFromFile(url);
 		
 		assertEquals(5, obj.size());	
@@ -38,7 +42,7 @@ public class FileUtilTest {
 	
 	@Test
 	public void testCountries() {
-		String url = "data/countries_ar.json";
+		URL url = getClass().getResource("/data/countries_ar.json");
 		JSONArray obj = FileUtil.getJSONArrayFromFile(url);
 		
 		assertEquals(249, obj.size());		
