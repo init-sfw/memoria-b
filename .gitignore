@@ -1,0 +1,10 @@
+*/.idea
+*~
+Thumbs.db
+*.db
+/target
+/.classpath
+/.metadata
+/.project
+/.settings
+
