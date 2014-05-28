@@ -5,5 +5,10 @@ Back-end del proyecto Memoria
 
 ## Descripción
 
-Web Service rest que provee el JSON de datos a ser usados por **Memoria**.
-Aún sin manejo de lógica ni completitud de los datos dentro del servicio (falta provisión de países y categorías).
+Web Services rest que proveen JSONs de datos a ser usados por **Memoria**.
+
+- /data: Trae el json con todos los eventos
+- /categories: Trae el json con todas las categorías posibles
+- /countries: Trae el json con todos los países posibles
+
+Los servicios se alojan en http://107.170.16.162:8088
