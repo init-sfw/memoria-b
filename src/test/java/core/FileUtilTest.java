@@ -1,8 +1,8 @@
 package core;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import java.io.File;
 import java.net.URL;
 
 import net.sf.json.JSONArray;
@@ -10,7 +10,7 @@ import net.sf.json.JSONObject;
 
 import org.junit.Test;
 
-import core.FileUtil;
+import utils.FileUtil;
 
 
 public class FileUtilTest {
