@@ -10,12 +10,12 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-@PropertySource("classpath:application.yml")
-public class Application {
+@PropertySource("classpath:application.properties")
+public class Application {   
 	
 	public static ConfigurableApplicationContext CONTEXT;
 
     public static void main(String[] args) {
         CONTEXT = SpringApplication.run(Application.class, args);
-    }
+    } 
 }
