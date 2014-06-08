@@ -26,4 +26,8 @@ class MEvent {
 	imageURI blank: false
 	rate range: 0..4
     }
+
+    static mapping = { 
+	longDescription type: 'text' 
+    }
 }
