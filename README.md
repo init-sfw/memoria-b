@@ -19,5 +19,5 @@ Con los siguientes parámetros posibles:
 Ejemplos:
 
 - http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2
-- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&categories=2
-- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&categories=2&country=14&country78
+- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2
+- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2&country=12&country=78
