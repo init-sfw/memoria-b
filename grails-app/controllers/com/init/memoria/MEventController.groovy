@@ -7,48 +7,38 @@ class MEventController {
 	def list() {
 		def events = MEvent.list()
 
-		withFormat {		
+		withFormat {
 			html mEventList:events
 			json { render events as JSON }
-		} 
+		}
 	}
 
 	def filter() {
-		def events
-		def categories = params.list('category').collect{a -> a.toInteger() }
-		def countries = params.list('country').collect{a -> a.toInteger() }
-
-		def query = "from MEvent as m where m.date between :fromDate and :toDate and m.rate <= :view"
-		query = query + prepareArrayQuery(categories, 'category')
-		query = query + prepareArrayQuery(countries, 'country')
-		
-		//FIXME: Fix this messi properly
-		if (categories.size() == 0 && countries.size() == 0) {
-			events = MEvent.findAll(query, [fromDate: params.date('fromDate', 'dd/MM/yyyy'), toDate: params.date('toDate', 'dd/MM/yyyy'), view: params.int('view')])			
-		}
-		else {
-			if (categories.size() != 0 && countries.size() != 0) {
-				events = MEvent.findAll(query, [fromDate: params.date('fromDate', 'dd/MM/yyyy'), toDate: params.date('toDate', 'dd/MM/yyyy'), view: params.int('view'), category: categories, country: countries])
-			}
-			else {
-				if (categories.size() == 0) {
-					events = MEvent.findAll(query, [fromDate: params.date('fromDate', 'dd/MM/yyyy'), toDate: params.date('toDate', 'dd/MM/yyyy'), view: params.int('view'), country: countries])
-				}
-				else {
-					events = MEvent.findAll(query, [fromDate: params.date('fromDate', 'dd/MM/yyyy'), toDate: params.date('toDate', 'dd/MM/yyyy'), view: params.int('view'), category: categories])
-				}
-			}
-		}
-
+    def (query,queryParams) = buildParameters()
+    def events = MEvent.findAll(query, queryParams)
 		render events as JSON
 	}
 
-	def prepareArrayQuery (array, property) {
-		if (array.size() > 0) {
-			return " and m." + property + ".id IN :" + property
-		}
-		else {
-			return ""
-		}
-	}
+  def buildParameters() {
+		def query = "from MEvent as m where m.date between :fromDate and :toDate and m.rate <= :view"
+
+    def queryParams = [
+      fromDate: params.date('fromDate', 'dd/MM/yyyy'),
+      toDate:   params.date('toDate', 'dd/MM/yyyy'),
+      view:     params.int('view')
+    ]
+
+    def categories = params.list('category').collect{a -> a.toInteger() }
+    def countries =  params.list('country').collect{a -> a.toInteger() }
+
+    if(categories.size()) {
+      query = query + " and m.category.id IN (:categories)"
+      queryParams.categories = categories
+    }
+    if(countries.size()) {
+      query = query + " and m.country.id IN (:countries)"
+      queryParams.countries = countries
+    }
+    return [query, queryParams]
+  }
 }
