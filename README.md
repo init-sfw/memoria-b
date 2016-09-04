@@ -11,3 +11,4 @@ Web Services rest that serves JSON REST api **Memoria**.
 - **/categories:** json with all the categories
 - **/countries:** json with all the countries
 
+__Newer version not yet tagged to master:__ https://github.com/init-sfw/memoria-b/tree/development
