@@ -1,14 +1,13 @@
 memoria-b
 =========
 
-Back-end del proyecto Memoria
+Back-end of project __Memoria__
 
-## Descripción
+## Description
 
-Web Services rest que proveen JSONs de datos a ser usados por **Memoria**.
+Web Services rest that serves JSON REST api **Memoria**.
 
-- **/data:** Trae el json con todos los eventos
-- **/categories:** Trae el json con todas las categorías posibles
-- **/countries:** Trae el json con todos los países posibles
+- **/data:** json with all the events
+- **/categories:** json with all the categories
+- **/countries:** json with all the countries
 
-Los servicios se alojan en http://107.170.16.162:8088
