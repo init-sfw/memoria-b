@@ -1,23 +1,22 @@
 memoria-b
 =========
 
-Back-end del proyecto Memoria
+Back-end of project __Memoria__
 
-## Descripción
+## Description
 
-Nueva versión del backend de **Memoria**, formado desde una aplicación grails que provee servicios en formato JSON.
+New version of **Memoria**, based on a grails application providing a REST JSON API
 
-Las consultas se hacen contra la siguiente url: http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter
-Con los siguientes parámetros posibles:
+params:
 
-- **fromDate:** Fecha de inicio del período a consultar [Requerido]
-- **toDate:** Fecha de fin del período a consultar [Requerido]
-- **view:** Valor del zoom del que se desea consultar (desde 0 a 4) [Requerido]
-- **category:** El id de la categoría por la cual se queire filtrar [Múltiple]
-- **country:** El id del país por el que se quiere filtrar [Múltiple]
+- **fromDate:** Starting date of the period to query [Required]
+- **toDate:** Ending date of the period to query [Required]
+- **view:** Zoom value (0 to 4) [Required]
+- **category:** Id of the category to filter from
+- **country:** Id of the country to filter from [Múltiple]
 
-Ejemplos:
+Examples:
 
-- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2
-- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2
-- http://107.170.16.162:8088/memoria-backend-0.5/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2&country=12&country=78
+- url/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2
+- url/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2
+- url/MEvent/filter?fromDate=01/01/1800&toDate=01/01/1900&view=2&category=2&country=12&country=78
